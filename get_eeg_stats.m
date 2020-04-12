@@ -146,9 +146,17 @@ for j = 1:length(tasklist)
                         
                     end
 
-                    ALLERP = pop_geterpvalues( path, window,  binlist(k),...
-                 electrodes , 'Baseline', 'pre', 'FileFormat', 'long', 'Filename', outfile, 'Fracreplace',...
-                 'NaN', 'InterpFactor',  1, 'Measure', measurecommand, 'PeakOnset',  1, 'Resolution',  3 )
+                    if complist(n) == "N1" && measures(m) == "lat"
+                        ALLERP = pop_geterpvalues( path, window,  binlist(k),...
+                            electrodes , 'Baseline', 'pre', 'FileFormat', 'long', 'Filename', outfile, 'Fracreplace',...
+                            'NaN', 'InterpFactor',  1, 'Measure', measurecommand, 'PeakOnset',  1,'Peakpolarity', 'negative', 'Resolution',  3 )
+                        
+                    else
+                        
+                        ALLERP = pop_geterpvalues( path, window,  binlist(k),...
+                            electrodes , 'Baseline', 'pre', 'FileFormat', 'long', 'Filename', outfile, 'Fracreplace',...
+                            'NaN', 'InterpFactor',  1, 'Measure', measurecommand, 'PeakOnset',  1, 'Resolution',  3 )
+                    end
                 end
             end
         end 
